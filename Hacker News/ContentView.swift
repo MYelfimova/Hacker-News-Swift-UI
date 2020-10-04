@@ -14,13 +14,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(networkMangaer.posts) { post in
-                Text(post.title).foregroundColor(.blue)
+                Text(post.title).foregroundColor(.black)
             }
             .navigationTitle("Hacker News")
         }
         .onAppear {
             self.networkMangaer.fetchDataList()
-            self.networkMangaer.fetchData()
         }
         
     }
