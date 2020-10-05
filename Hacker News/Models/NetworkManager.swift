@@ -15,8 +15,6 @@ class NetworkManager: ObservableObject {
     func fetchDataList() {
         
         func getData(myURL: String) {
-            posts = []
-                   
                    if let url = URL(string: myURL) {
                        let session = URLSession(configuration: .default)
                        let task = session.dataTask(with: url) { (data, response, erorr) in
@@ -35,7 +33,6 @@ class NetworkManager: ObservableObject {
                                }
                            }
                        }
-                       
                        task.resume()
                    }
                }
@@ -67,8 +64,8 @@ class NetworkManager: ObservableObject {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             //var i = 0
-            for i in 0..<15  { //in self.list_url {
-                let url = "https://hacker-news.firebaseio.com/v0/item/\(self.list_url[i]).json"
+            for i in self.list_url { //in 0..<15  { //
+                let url = "https://hacker-news.firebaseio.com/v0/item/\(i).json"
                 print(url)
                 getData(myURL: url)
             }
